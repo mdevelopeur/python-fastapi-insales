@@ -20,6 +20,7 @@ async def get_handler():
 async def post_handler(request: Request):
     try:
         body = await request.json()
+        print(body)
         return 
     except Exception as e:
         print(e)
