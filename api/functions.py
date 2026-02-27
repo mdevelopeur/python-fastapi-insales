@@ -17,3 +17,12 @@ async def get_products(client, last_id):
     products = await get_products(client, result["last_id"])
     products.extend(result["data"])
   return products
+
+def get_order_items(items, products):
+  output = []
+  for item in items:
+    product = next((product for product in products if product['article'] == item["sku"]), None)
+    if product is not None:
+      output.append({"id": product["id"], "quantity": product["quantity"]})
+
+  return output
