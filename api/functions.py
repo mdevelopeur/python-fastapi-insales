@@ -26,3 +26,10 @@ def get_order_items(items, products):
       output.append({"id": product["id"], "quantity": product["quantity"]})
 
   return output
+
+async def create_order(client, items):
+  url = mpfit + ""
+  body = { "items": items, "shipment_date": ""}
+  result = await client.post(url=url, headers=mpfit_headers, json=body)
+  result = result.json()
+  return result["order"]["id"]
