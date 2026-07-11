@@ -79,10 +79,11 @@ async def get_products(client, last_id):
 def get_order_items(items, products):
   output = []
   for item in items:
+    print(item)
     product = next((product for product in products if product['article'] == item["sku"]), None)
     if product is not None:
       output.append({"product_id": product["id"], "quantity": item["quantity"]})
-
+      print(product)
   return output
 
 async def create_order(client, items, note, id):
